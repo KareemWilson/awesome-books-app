@@ -3,30 +3,34 @@ const titleInput = document.querySelector(".title-input");
 const authorInput = document.querySelector(".author-input");
 const addBtn = document.querySelector(".btn-add");
 
-const generateBookCard = () => {
-  const title = document.createElement("p");
-  const author = document.createElement("p");
-  const removeBtn = document.createElement("button");
-  
-  title.setAttribute("class", "title");
-  author.setAttribute("class", "author");
-  removeBtn.setAttribute("class", "btn-remove");
+// const form = document.querySelector('.form');
+// const library = document.querySelector('.library');
+// const Author = document.querySelector('.author');
+// const title = document.querySelector('.title');
 
-  bookSection.append(title, author, removeBtn);
+let list = JSON.parse(localStorage.books) || [];
 
-  title.innerHTML = titleInput.value;
-  author.innerHTML = authorInput.value;
-  removeBtn.innerHTML = "Remove";
+const getBooksFromLocalStorage = () => {
 
-  removeBtn.addEventListener('click', (e) => {
-    e.preventDefault()
-    bookSection.remove(title,author,removeBtn)
-  })
-};
+  if (localStorage.books) {
+  let booksArray = [];
+    booksArray = JSON.parse(localStorage.books)
+    console.log(booksArray)
+    booksArray.forEach((book) => bookSection.insertAdjacentHTML('beforeend', libraryBooks(book)));
+  } else {
+    console.log("books does not exist")
+  }
+}
 
-addBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  generateBookCard()
-  
-});
+getBooksFromLocalStorage();
 
+function libraryBooks(object) {
+  return `<div class="${object.author}">
+    <h1>${object.book}</h1>
+    <p>${object.author}</p>
+    <hr>
+    <button class="remove">
+    remove
+    </button>
+    </div><br><br>`;
+}
