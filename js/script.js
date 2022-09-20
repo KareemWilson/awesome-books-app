@@ -2,8 +2,6 @@ let list = localStorage.books
   ? JSON.parse(localStorage.getItem('books'))
   : [];
 
-console.log(list);
-
 const fetchBooks = () => {
   const bookSection = document.querySelector('.display-books');
   if (list) {
@@ -12,7 +10,7 @@ const fetchBooks = () => {
     <h1>${book.title}</h1>
     <p>${book.author}</p>
     <hr>
-    <button id=${book.id} class='btn-remove'>
+    <button id=${book.title} class='btn-remove' onclick="removeBook('${book.title}')">
     remove
     </button>
     </div>`,
@@ -22,11 +20,17 @@ const fetchBooks = () => {
 };
 fetchBooks();
 
+const removeBook = (title) => {
+  const updatedList = list.filter((book) => book.title !== title);
+  list = updatedList;
+  localStorage.setItem('books', JSON.stringify(list));
+  fetchBooks(list);
+};
+removeBook();
+
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
 const addBtn = document.querySelector('.btn-add');
-const remove = document.querySelectorAll('.btn-remove');
-console.log(remove);
 
 const addBook = (obj) => {
   list.push(obj);
@@ -50,18 +54,3 @@ addBtn.addEventListener('click', (e) => {
   authorInput.value = '';
   titleInput.value = '';
 });
-
-const removeBook = (bookId) => {
-  console.log('book id in remove func: ', bookId);
-  const updatedList = list.filter((book) => book.id !== parseInt(bookId, 10));
-  list = updatedList;
-  console.log('I am in remove func and the updated list is ', list);
-};
-
-remove.forEach((btn) => btn.addEventListener('click', (e) => {
-  e.preventDefault();
-  console.log('in event listener and I pass an id : ', btn.id);
-  removeBook(btn.id);
-  fetchBooks(list);
-  localStorage.setItem('books', JSON.stringify(list));
-}));

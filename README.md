@@ -7,7 +7,7 @@
 - HTML
 - JavaScript
 
-## Live Demo (if available)
+## Live Demo
 
 [Live Demo Link](https://livedemo.com)
 
@@ -27,6 +27,16 @@ To get a local copy up and running follow these simple example steps.
 
 - GitHub: [@KareemWilson](https://github.com/KareemWilson)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/kareem-wilsons)
+
+👤 **Jorum Odiemo**
+
+- GitHub: [@JOdiemo](https://github.com/JOdiemo)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/jorumodiemo)
+
+👤 **Ahmed Nazir**
+
+- GitHub: [@ahmednazirmusah](https://github.com/ahmednazirmusah)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/ahmednazirmusah)
 
 
 
