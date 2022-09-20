@@ -33,9 +33,11 @@ const authorInput = document.querySelector('.author-input');
 const addBtn = document.querySelector('.btn-add');
 
 const addBook = (obj) => {
+  if (authorInput.value !== "" && titleInput.value !== "") {
   list.push(obj);
   fetchBooks(list);
   localStorage.setItem('books', JSON.stringify(list));
+  }
 };
 
 const createBookObj = () => {
