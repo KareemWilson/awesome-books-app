@@ -6,14 +6,12 @@ const fetchBooks = () => {
   const bookSection = document.querySelector('.display-books');
   if (list) {
     const BooksCard = list.map(
-      (book) => `<div class='${book.title}'>
-    <h1>${book.title}</h1>
-    <p>${book.author}</p>
-    <hr>
+      (book) => `<div class='${book.title} book-container'>
+    <h1 class="book-title">" ${book.title} " <span class="book-author">by ${book.author}</span></h1>
     <button id=${book.title} class='btn-remove' onclick="removeBook('${book.title}')">
     remove
     </button>
-    </div>`,
+    </div><hr>`,
     );
     bookSection.innerHTML = BooksCard.join('');
   }
