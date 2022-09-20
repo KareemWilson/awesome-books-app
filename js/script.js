@@ -1,62 +1,67 @@
-const bookSection = document.querySelector('.display-books');
+let list = localStorage.books
+  ? JSON.parse(localStorage.getItem('books'))
+  : [];
+
+console.log(list);
+
+const fetchBooks = () => {
+  const bookSection = document.querySelector('.display-books');
+  if (list) {
+    const BooksCard = list.map(
+      (book) => `<div class='${book.title}'>
+    <h1>${book.title}</h1>
+    <p>${book.author}</p>
+    <hr>
+    <button id=${book.id} class='btn-remove'>
+    remove
+    </button>
+    </div>`,
+    );
+    bookSection.innerHTML = BooksCard.join('');
+  }
+};
+fetchBooks();
+
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
 const addBtn = document.querySelector('.btn-add');
+const remove = document.querySelectorAll('.btn-remove');
+console.log(remove);
 
-let list = localStorage.books ? JSON.parse(localStorage.books) : [];
-
-function remove() {
-  const removebtn = document.querySelectorAll('.remove');
-  removebtn.forEach((element) => element.addEventListener('click', () => {
-    const parentNodeClass = element.parentNode.className;
-    element.parentNode.remove();
-    list = list.filter((x) => x.book !== parentNodeClass);
-  }));
+const addBook = (obj) => {
+  list.push(obj);
+  fetchBooks(list);
   localStorage.setItem('books', JSON.stringify(list));
-}
-
-function libraryBooks(object) {
-  return `<div class="${object.book}">
-    <h1>${object.book}</h1>
-    <p>${object.author}</p>
-    <hr>
-    <button class="remove" onClick=${remove()}>
-    remove
-    </button>
-    </div>`;
-}
-
-const getBooksFromLocalStorage = () => {
-  if (localStorage.books) {
-    let booksArray = [];
-    booksArray = JSON.parse(localStorage.books);
-    booksArray.forEach((book) => bookSection.insertAdjacentHTML('beforeend', libraryBooks(book)));
-  }
 };
 
-getBooksFromLocalStorage();
-
-function add() {
-  if (authorInput.value !== '' && titleInput.value !== '') {
-    const currentBook = [];
-    currentBook.push({
-      author: authorInput.value,
-      book: titleInput.value,
-    });
-    list.push({
-      author: authorInput.value,
-      book: titleInput.value,
-    });
-    if (list.length > 0) {
-      currentBook.forEach((book) => bookSection.insertAdjacentHTML('beforeend', libraryBooks(book)));
-    }
-  }
-  authorInput.value = '';
-  titleInput.value = '';
-  localStorage.setItem('books', JSON.stringify(list));
-}
+const createBookObj = () => {
+  const count = list.length;
+  return {
+    id: count + 1,
+    author: authorInput.value,
+    title: titleInput.value,
+  };
+};
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  add();
+  const currentBook = createBookObj();
+  addBook(currentBook);
+  authorInput.value = '';
+  titleInput.value = '';
 });
+
+const removeBook = (bookId) => {
+  console.log('book id in remove func: ', bookId);
+  const updatedList = list.filter((book) => book.id !== parseInt(bookId, 10));
+  list = updatedList;
+  console.log('I am in remove func and the updated list is ', list);
+};
+
+remove.forEach((btn) => btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('in event listener and I pass an id : ', btn.id);
+  removeBook(btn.id);
+  fetchBooks(list);
+  localStorage.setItem('books', JSON.stringify(list));
+}));
