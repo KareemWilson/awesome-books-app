@@ -1,57 +1,44 @@
-
-let list = localStorage.books
-  ? JSON.parse(localStorage.getItem('books'))
-  : [];
-
-const fetchBooks = () => {
-  const bookSection = document.querySelector('.display-books');
-  if (list) {
-    const BooksCard = list.map(
-      (book) => `<div class='${book.title} book-container'>
-    <h1 class="book-title">" ${book.title} " <span class="book-author">by ${book.author}</span></h1>
-    <button id=${book.title} class='btn-remove' onclick="removeBook('${book.title}')">
-    remove
-    </button>
-    </div><hr>`,
-    );
-    bookSection.innerHTML = BooksCard.join('');
-  }
-};
-fetchBooks();
-
-const removeBook = (title) => {
-  const updatedList = list.filter((book) => book.title !== title);
-  list = updatedList;
-  localStorage.setItem('books', JSON.stringify(list));
-  fetchBooks(list);
-};
-removeBook();
+import { Liberary } from "./class.js";
 
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
 const addBtn = document.querySelector('.btn-add');
+let list = localStorage.books
+  ? JSON.parse(localStorage.getItem('books'))
+  : [];
 
-const addBook = (obj) => {
-  if (authorInput.value !== '' && titleInput.value !== '') {
-    list.push(obj);
-    fetchBooks(list);
-    localStorage.setItem('books', JSON.stringify(list));
-  }
-};
+window.removeBook = function removeBook(title){
+  myBookList.removeBook(title)
+  const updatedList = myBookList.fetchBooks()
+  bookSection.innerHTML = updatedList.join('');
+}
 
-const createBookObj = () => {
-  const count = list.length;
-  return {
-    id: count + 1,
-    author: authorInput.value,
-    title: titleInput.value,
-  };
-};
+const myBookList = new Liberary(list)
+console.log(myBookList);
+const bookSection = document.querySelector('.display-books');
+const booksCards = myBookList.fetchBooks()
+bookSection.innerHTML = booksCards.join('');
+
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  const currentBook = createBookObj();
-  addBook(currentBook);
+  const currentBook = myBookList.createBookObj(titleInput.value, authorInput.value);
+  myBookList.addBook(currentBook);
+  const updatedList = myBookList.fetchBooks()
+  bookSection.innerHTML = updatedList.join('');
   authorInput.value = '';
   titleInput.value = '';
 });
+
+// const removeBtns = document.querySelectorAll('.btn-remove')
+
+// removeBtns.forEach((btn) => {
+//   console.log(btn)
+//   btn.onclick((e) => {
+//     console.log('hi from obj')
+//     myBookList.removeBook(btn.id)
+//     const updatedList = myBookList.fetchBooks()
+//     console.log(updatedList, btn.id);
+//     bookSection.innerHTML = updatedList.join('');  
+//   })
+// })
