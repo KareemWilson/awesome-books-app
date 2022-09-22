@@ -3,16 +3,6 @@
     font-family: sans-serif;
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  padding-top: 100px;
-  font-size: 40px;
-}
-
 nav {
   display: flex;
   flex-direction: row;
