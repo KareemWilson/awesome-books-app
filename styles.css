@@ -29,7 +29,7 @@ body {
   font-size: 30px;
 }
 
-.book-author{
+.book-author {
   font-size: 26px;
   font-weight: 400;
 }
@@ -40,7 +40,7 @@ body {
 }
 
 .add-book {
-  width: 20%
+  width: 20%;
 }
 
 form {
@@ -54,12 +54,11 @@ input {
   border-radius: 5px;
   width: 100%;
   height: 38px;
-
 }
 
 button {
   font-size: 32px;
   border: 77px 59px black;
   padding: 4px;
-  box-shadow: 7px 6px #000000;
+  box-shadow: 7px 6px #000;
 }
