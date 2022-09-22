@@ -29,3 +29,32 @@ addBtn.addEventListener('click', (e) => {
   authorInput.value = '';
   titleInput.value = '';
 });
+
+const navList = document.querySelector('.list');
+const add = document.querySelector('.add');
+const contact = document.querySelector('.contact');
+
+const ListSection = document.querySelector('.books-section');
+const AddSection = document.querySelector('.add-book-section');
+const contactSection = document.querySelector('.contact-section');
+
+navList.addEventListener('click', (e) => {
+  e.preventDefault();
+  ListSection.classList.remove('d-none');
+  AddSection.classList.add('d-none');
+  contactSection.classList.add('d-none');
+});
+
+add.addEventListener('click', (e) => {
+  e.preventDefault();
+  AddSection.classList.remove('d-none');
+  ListSection.classList.add('d-none');
+  contactSection.classList.add('d-none');
+});
+
+contact.addEventListener('click', (e) => {
+  e.preventDefault();
+  contactSection.classList.remove('d-none');
+  AddSection.classList.add('d-none');
+  ListSection.classList.add('d-none');
+});
