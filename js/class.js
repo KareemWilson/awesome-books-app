@@ -22,6 +22,9 @@ export default class Liberary {
     if (obj.title !== '' && obj.author !== '') {
       this.books.push(obj);
       localStorage.setItem('books', JSON.stringify(this.books));
+      alert('Book Added Sucessfully');
+    } else {
+      alert('Kindly input both the Author Name and the Book Title.');
     }
   };
 
