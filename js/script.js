@@ -8,8 +8,8 @@ const list = localStorage.books ? JSON.parse(localStorage.getItem('books')) : []
 const myBookList = new Liberary(list);
 const bookSection = document.querySelector('.display-books');
 
-window.removeBook = function removeBook(title) {
-  myBookList.removeBook(title);
+window.removeBook = function removeBook(id) {
+  myBookList.removeBook(id);
   const updatedList = myBookList.fetchBooks();
   bookSection.innerHTML = updatedList.join('');
 };
