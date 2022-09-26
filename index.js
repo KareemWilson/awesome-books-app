@@ -1,4 +1,4 @@
-import Liberary from './class.js';
+import Liberary from './modules/class.js';
 
 const titleInput = document.querySelector('.title-input');
 const authorInput = document.querySelector('.author-input');
