@@ -1,2 +1,10 @@
 export const addBtn = document.querySelector('.btn-add');
 export const bookSection = document.querySelector('.display-books');
+export const navList = document.querySelector('.list');
+export const add = document.querySelector('.add');
+export const contact = document.querySelector('.contact');
+export const ListSection = document.querySelector('.books-section');
+export const AddSection = document.querySelector('.add-book-section');
+export const contactSection = document.querySelector('.contact-section');
+export const titleInput = document.querySelector('.title-input');
+export const authorInput = document.querySelector('.author-input');

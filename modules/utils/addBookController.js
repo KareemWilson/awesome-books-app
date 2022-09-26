@@ -1,6 +1,4 @@
-const titleInput = document.querySelector('.title-input');
-const authorInput = document.querySelector('.author-input');
-const bookSection = document.querySelector('.display-books');
+import { titleInput, authorInput, bookSection } from './elements.js';
 
 const addBook = (bookList) => {
   const currentBook = bookList.createBookObj(

@@ -1,12 +1,12 @@
 import navControl from './utils/navControl.js';
-
-const navList = document.querySelector('.list');
-const add = document.querySelector('.add');
-const contact = document.querySelector('.contact');
-
-const ListSection = document.querySelector('.books-section');
-const AddSection = document.querySelector('.add-book-section');
-const contactSection = document.querySelector('.contact-section');
+import {
+  navList,
+  add,
+  contact,
+  ListSection,
+  AddSection,
+  contactSection,
+} from './utils/elements.js';
 
 const navigate = () => {
   navList.addEventListener('click', (e) => {
