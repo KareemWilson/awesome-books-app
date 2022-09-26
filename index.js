@@ -13,11 +13,13 @@ const myBookList = new Liberary(list);
 const booksCards = myBookList.fetchBooks();
 bookSection.innerHTML = booksCards.join('');
 
-window.removeBook = function removeBook(id) {
+const removeBook = (id) => {
   myBookList.removeBook(id);
   const updatedList = myBookList.fetchBooks();
   bookSection.innerHTML = updatedList.join('');
 };
+
+window.removeBook = removeBook;
 
 addBtn.addEventListener('click', (e) => {
   e.preventDefault();

@@ -8,3 +8,4 @@ export const AddSection = document.querySelector('.add-book-section');
 export const contactSection = document.querySelector('.contact-section');
 export const titleInput = document.querySelector('.title-input');
 export const authorInput = document.querySelector('.author-input');
+export const time = document.querySelector('.time');

@@ -1,6 +1,5 @@
 import { DateTime } from '../node_modules/luxon/src/luxon.js';
-
-const time = document.querySelector('.time');
+import { time } from './utils/elements.js';
 
 const showTime = () => {
   const dt = DateTime.utc();
