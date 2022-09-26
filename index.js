@@ -2,14 +2,14 @@ import Liberary from './modules/class.js';
 import navigate from './modules/nav.js';
 import addBook from './modules/utils/addBookController.js';
 import { addBtn, bookSection } from './modules/utils/elements.js';
+import showTime from './modules/time.js';
 
-navigate();
-
-// const addBtn = document.querySelector('.btn-add');
 const list = localStorage.books ? JSON.parse(localStorage.getItem('books')) : [];
 
+navigate();
+showTime();
+
 const myBookList = new Liberary(list);
-// const bookSection = document.querySelector('.display-books');
 const booksCards = myBookList.fetchBooks();
 bookSection.innerHTML = booksCards.join('');
 

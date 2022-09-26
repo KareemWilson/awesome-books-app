@@ -123,3 +123,13 @@ footer {
   border: 5px solid;
   width: 97%;
 }
+
+.time {
+  width: 341px;
+  height: 50px;
+  align-self: flex-end;
+  margin-right: 17px;
+  color: #c8b4b4;
+  font-size: 23px;
+  font-weight: 600;
+}
